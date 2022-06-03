@@ -27,19 +27,24 @@ function Todo() {
     { key: getKey(), text: '明日の準備をする', done: false },
     /* テストコード 終了 */
   ]);
+
+  const [filter_items, setFilter_items] = React.useState(items);
   
   return (
     <div className="panel">
       <div className="panel-heading">
         ITSS ToDoアプリ
       </div>
-      <Input data={items} func={putItems}/>
       
-      {items.map(item => (
+      <Input data={items} func={putItems} func2={setFilter_items}/>
+
+      <Filter data={items} func={setFilter_items}/>
+      
+      {filter_items.map(item => (
         <TodoItem
           key={item.key}
           item={item}
-          data={items} 
+          data={filter_items}
           func={putItems}
           />
       ))}

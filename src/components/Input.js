@@ -13,16 +13,14 @@ function Input(props) {
         className="input" 
         type="text" 
         placeholder="新しいタスクを入って" 
-        onblur="getVal()" 
         onKeyDown={(e) => {
           if (e.key == "Enter") {
-            props.func(
-              [...props.data, 
-              {key: getKey(), text: e.target.value, done: false}]
-            );
+            let old_data = props.data
+            let new_item = {key: getKey(), text: e.target.value, done: false}
+            props.func([...old_data, new_item]);
             e.target.value = "";
+            props.func2([...old_data, new_item]);
           }
-          
         }}
         >
       </input>
