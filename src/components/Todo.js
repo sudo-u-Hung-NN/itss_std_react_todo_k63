@@ -36,15 +36,14 @@ function Todo() {
       <Input data={items} func={putItems}/>
       
       {items.map(item => (
-        // <label className="panel-block">
-        //     <input type="checkbox" />
-        //     {item.text}
-        // </label>
         <TodoItem
           key={item.key}
           item={item}
+          data={items} 
+          func={putItems}
           />
       ))}
+      
       <div className="panel-block">
         {items.length} items
       </div>
