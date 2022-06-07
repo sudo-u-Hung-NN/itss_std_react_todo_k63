@@ -16,15 +16,15 @@ function useStorage() {
 　
 　/* 副作用を使う */
   useEffect(() => {
-    
-  }, []);
+    localStorage.setItems(STORAGE_KEY, JSON.stringify(items))
+  }, [items]);
 
-  const putItems = items => {
-    
+  const putItems = newItems => {
+    setItems([...items, ...newItems])
   };
 
   const clearItems = () => {
-    
+    setItems([])
   };
 
   return [items, putItems, clearItems];
